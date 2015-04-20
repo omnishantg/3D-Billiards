@@ -1,1 +1,18 @@
-# cs354r-poolgame
+
+# 3D-Billiards
+
+**Nishant Gupta, Steven Dao, Josan Munoz**
+
+----
+**Version 2.0**
+
+This time around the initial design and implamentation began easy, but quickly ramped up and hit a couple of walls. We used Boost libraries for networking which greatly simplified our work, but when it came to when and where we start reading/writing from network we ran into IO issues and threading issues. In Ogre code we ran into the "who's turn is it?" issue with client and server. We ultimately got everything working pretty well. We only handle the player disconnect issue by closing both programs. With Boost we chose to specifically use TCP as packet order and guaranteed delivery were key aspects we'd like when sending/receiving ball or player information over the wire.
+
+One bug we didn't get around to fixing is the camera control issue where the player can overspin the camera and flip the left/right axis and this greaty confuses players. It wasn't intentional leave-in we just chose to focus on the network much more this project time. As we previously stated we removed the ability to turn gravity on/off as it would be too complicated over network, and was filled with phsyics related bugs. 
+
+---
+**Version 1.0**
+
+The project went little smoother than expected in some aspects and more difficult in other areas. The physics, which was the main focus of the game, turned out to go alot easier than expected. As we kept implementing features and mechanics, the physics was the great wall we had to get over each time but never took longer than 1 sit-down session. Another aspect that went really well was audio. None of us had experience in loading in and playing audio to a game engine, but after the first or second iteration of audio, the background music and some sound effects were in. The user interface from SDKTrays became one of the more frustrating issues to deal with. This resulted in us scoping back to a simpler implamentation of hit force. Getting in user input with OIS and using the StateMachine implamentation for game and player states was a smaller success we came across.
+
+Some bugs still exist in the game, one of which is where while usinghigh hit strength, the player can hit the ball out of the playing field through the walls. Another issue we had is constant sound effect noise when a ball is close to a wall enough to touch the wall. The sound would play over and over again albeit not explicitly bouncing against the wall.
